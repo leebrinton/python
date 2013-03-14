@@ -1,4 +1,10 @@
-import Tkinter as tk
+import leebrinton.util
+import leebrinton.util.strutil as strutil
+
+if leebrinton.util.is_ver_3():
+    import tkinter as tk
+else:
+    import Tkinter as tk
 
 class ScrollerFrame( tk.Frame ):
     def __init__( self, master, widgetClass, mode, **widgetOptions ):
@@ -79,8 +85,16 @@ def setTopLevelIcon( window, iconName ):
     except TclError:
         log.error( __name__, "Unable to set icon" )		
 
-def setTopLevelIconphoto( window, photoname ):
-    img = tk.PhotoImage( file=photoname )
+def setTopLevelIconphoto( window, photo ):
+    img = photo
+
+    if leebrinton.util.is_ver_3():
+        if strutil.isString( photo ):
+            img = tk.PhotoImage( file=photoname )
+    else:
+        if strutil.isBaseString( photo ):
+            img = tk.PhotoImage( file=photoname )
+
     window.tk.call( 'wm', 'iconphoto', window, "-default", img )
     #window.tk.call( 'wm', 'iconphoto', root._w, img )
 

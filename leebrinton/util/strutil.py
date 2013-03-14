@@ -1,4 +1,4 @@
-import log
+import leebrinton.util.log as log
 
 def isBaseString( value ):
     return isinstance( value, basestring )

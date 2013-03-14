@@ -17,4 +17,4 @@ def getCurrentUser():
     return user
 
 if __name__ == '__main__':
-    print 'User: %s' % getCurrentUser()
+    print( 'User: %s' % getCurrentUser() )
