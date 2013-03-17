@@ -1,4 +1,4 @@
-import log
+import leebrinton.util.log as log
 import time
 
 SECONDS_PER_MINUTE = 60

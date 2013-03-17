@@ -1,4 +1,5 @@
-import userutil
+from leebrinton.util import is_ver_3
+import leebrinton.util.userutil as userutil
 
 _haveLogging = False
 _haveApacheCommonsLogging = False
@@ -28,8 +29,8 @@ except ImportError:
             from java.util.logging import Level
             _loggingMethod = 'java.util.logging.Logger'
             _haveLogging = True
-        except ImportError, err:
-            print 'Neither logging nor java.util.logging.Logger is avalable!', err
+        except ImportError as err:
+            print( 'Neither logging nor java.util.logging.Logger is avalable! ' + str(err) )
 
 ################################################################################
 class LogLevel:
@@ -156,8 +157,8 @@ class LogWithJavaUtilLogging( LogBase ):
         loggerLevel = getLogLevelByName( levelName )
         logger.setLevel( self.getLoggingLevel() )
         loggingMethodLevel = loggerLevel
-        print str(loggingMethodLevel) + ':' + str(loggerLevel)
-        print logger.getLevel()
+        print( str(loggingMethodLevel) + ':' + str(loggerLevel))
+        print( logger.getLevel() )
         logger.log( loggingMethodLevel, msg )
 
 ################################################################################
@@ -178,7 +179,7 @@ def getLogInstance( key ):
             print( "key: [%s] [%s]" % (key, str(type(key))) )
 
         result = __loggers[name]
-    except KeyError, ke:
+    except KeyError as ke:
         if _haveLogging:
             if _loggingMethod == 'logging':
                 result = LogWithPythonLogging( name )
