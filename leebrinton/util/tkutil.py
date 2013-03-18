@@ -2,9 +2,9 @@ import leebrinton.util
 import leebrinton.util.strutil as strutil
 
 try:
-    import tkinter.font as tkfont
+    import tkinter as tk
 except ImportError:
-    import tkFont as tkfont
+    import Tkinter as tk
 
 class ScrollerFrame( tk.Frame ):
     def __init__( self, master, widgetClass, mode, **widgetOptions ):
