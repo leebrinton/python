@@ -1,5 +1,7 @@
+from leebrinton.util import is_ver_2
 from leebrinton.util import is_ver_3
 import leebrinton.util.userutil as userutil
+import leebrinton.util.strutil as strutil
 
 _haveLogging = False
 _haveApacheCommonsLogging = False
@@ -169,7 +171,9 @@ def getLogInstance( key ):
     name = 'default'
 
     try:
-        if isinstance( key, basestring):
+        if is_ver_2() and strutil.isBaseString( key ):
+            name = key
+        elif is_ver_3() and strutil.isString( key ):
             name = key
         elif hasattr( key, '__class__'):
             name = key.__class__.__name__

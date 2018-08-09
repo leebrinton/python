@@ -1,5 +1,3 @@
-import leebrinton.util.log as log
-
 def isBaseString( value ):
     return isinstance( value, basestring )
 
@@ -15,7 +13,7 @@ def isEmpty( value ):
     if not isBaseString( value ):
         msg = 'Expecting instance of basestring '
         msg += 'but recieved %s' % str(type(value))
-        log.error( msg )
+        print( msg )
         raise TypeError( msg )
     elif value == None:
         result = True
